@@ -2,12 +2,25 @@
   "extends": ["wesbos"],
   "rules": {
     // "no-console": 2,
-    "prettier/prettier": [
-      "error",
-      {
-        "trailingComma": "es5",
-        "singleQuote": true
-      }
-    ]
+    // "prettier/prettier": [
+    //   "error",
+    //   {
+    //     "trailingComma": "es5",
+    //     "singleQuote": true
+    //   }
+    // ],
+    "prettier/prettier": 0,
+    "react/jsx-filename-extension": 0,
+    "no-unused-vars": 1,
+    "import/prefer-default-export": 0,
+    "jsx-a11y/label-has-associated-control": 0,
+    "react/button-has-type": 0,
+    "react/prop-types": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "no-return-assign": 0,
+    "no-param-reassign": 0,
+    "no-unused-expressions": 1,
+    "no-undef": 1,
+    "default-case": 1
   }
 }

@@ -210,6 +210,30 @@
 
     console.table(cleanPeople);
 
+    // Filter / find
+    // filter returns an array
+    const over40 = cleanPeople.filter(person => person.age > 40)
+    console.table(over40);
+
+    // find returns a single value
+    // High(er) order function - a function that returns another function v
+    function findById(id) {
+      return function isStudent(student) {
+        return student.id === id;
+      }
+    }
+
+    function findByProp(prop, propWeAreLookingFor) {
+      return function isStudent(student) {
+        return student[prop] === propWeAreLookingFor;
+      }
+    }
+
+    const student = students.find(findByProp('id', '565a'));
+    const student2 = students.find(findByProp('first_name', 'Micki'));
+    console.log(student);
+    console.log(student2);
+
   </script>
 </body>
 

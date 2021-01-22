@@ -2,11 +2,11 @@ function Slider(slider) {
   if (!(slider instanceof Element)) {
     throw new Error('No slider passed in');
   }
-  // create some variables for working iwth the slider
+  // create some vars for working with the slider
   let prev;
   let current;
   let next;
-  // select the elements needed for the slider
+  // select the Els needed for the slider
   const slides = slider.querySelector('.slides');
   const prevButton = slider.querySelector('.goToPrev');
   const nextButton = slider.querySelector('.goToNext');
@@ -15,7 +15,6 @@ function Slider(slider) {
     current = slider.querySelector('.current') || slides.firstElementChild;
     prev = current.previousElementSibling || slides.lastElementChild;
     next = current.nextElementSibling || slides.firstElementChild;
-    console.log({ current, prev, next });
   }
 
   function applyClasses() {
@@ -31,9 +30,9 @@ function Slider(slider) {
     current.classList.remove(...classesToRemove);
     next.classList.remove(...classesToRemove);
     if (direction === 'back') {
-      // make an new array of the new values, and destructure them over and into the prev, current and next variables
+      // make a new array of the new values, and destructure them over and into the prev, current, and next values
       [prev, current, next] = [
-        // get the prev slide, if there is none, get the last slide from the entire slider for wrapping
+        // get the prev slide, if there is one, or get the last slide from the entire slider for wrapping
         prev.previousElementSibling || slides.lastElementChild,
         prev,
         current,
@@ -54,7 +53,7 @@ function Slider(slider) {
   startSlider();
   applyClasses();
 
-  // Event listeners
+  // event listeners
   prevButton.addEventListener('click', () => move('back'));
   nextButton.addEventListener('click', move);
 }

@@ -33,30 +33,46 @@
     }
 
     function handleError(err) {
-      console.log('ohhh noooo');
-      console.log(err);
+      console.log('oh noo')
+      console.log(err)
     }
 
-    function handleDisgustingPizza() {
+    // async function will always return a promise themselves, that means you can use the .then or .catch on the function itself
 
-    }
     async function go() {
-      const pizza = await makePizza(['pineapple']).catch(handleDisgustingPizza);
-      return pizza;
+      // 1) try/catch
+      // 2) mix/match -> .catch after await
+      // try {
+      const pizza = await makePizza(['pineapple'])
+      // .catch(handleError)
+      console.log(pizza)
+      // } catch (err) {
+      //   console.log(err)
+      // }
     }
 
-    // catch it at run time
-    go().catch(handleError);
+    // go().then(result => {
+    //   console.log(result)
+    // }).catch(handleError)
+    // or add .catch on function call
+
+    async function goGo() {
+      const result = await go();
+    }
+
+    // catch it at runtime
+    // goGo().catch(handleError)
     // make a safe function with a HOF
+
     function makeSafe(fn, errorHandler) {
       return function () {
         fn().catch(errorHandler)
       }
     }
 
-    const safeGo = makeSafe(go, handleError);
+    const safeGo = makeSafe(go, handleError)
 
-    safeGo();
+    safeGo()
 
   </script>
 </body>

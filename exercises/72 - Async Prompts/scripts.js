@@ -1,5 +1,5 @@
 function wait(ms = 0) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function destroyPopup(popup) {
@@ -24,7 +24,7 @@ function ask(options) {
         <input type="text" name="input"/>
         <button type="submit">Submit</button>
       </fieldset>
-    `
+    `,
     );
 
     // check if they want a cancel button
@@ -32,7 +32,6 @@ function ask(options) {
       const skipButton = document.createElement('button');
       skipButton.type = 'button';
       skipButton.textContent = 'Cancel';
-      console.log(popup.firstChild);
       popup.firstElementChild.appendChild(skipButton);
       // TODO: listen for a click on that cancel button
       skipButton.addEventListener(
@@ -41,7 +40,7 @@ function ask(options) {
           resolve(null);
           destroyPopup(popup);
         },
-        { once: true }
+        { once: true },
       );
     }
     // listen for the submit event on the inputs
@@ -54,7 +53,7 @@ function ask(options) {
         // remove it from the DOM entirely
         destroyPopup(popup);
       },
-      { once: true }
+      { once: true },
     );
     // when someone does submit it, resolve the data that was in the input box!
 
@@ -80,7 +79,7 @@ async function askQuestion(e) {
 }
 
 const buttons = document.querySelectorAll('[data-question]');
-buttons.forEach(button => button.addEventListener('click', askQuestion));
+buttons.forEach((button) => button.addEventListener('click', askQuestion));
 
 const questions = [
   { title: 'What is your name?' },
